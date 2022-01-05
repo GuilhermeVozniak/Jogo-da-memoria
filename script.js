@@ -78,7 +78,7 @@ function mostra(id) {
             }
             else {
                 //senão vira as imagens de volta
-                setTimeout(e2, 700);
+                setTimeout(e2, 500);
                 function e2() {
                     elemento1.src = "./IMG/verde.png";
                     elemento2.src = "./IMG/verde.png";

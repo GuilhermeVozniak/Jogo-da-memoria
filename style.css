@@ -54,7 +54,16 @@ body{
     color: green;
     height: 100%;
     font-size: 3em;
+
+    animation-name: animatetop;
+    animation-duration: 0.5s
 }
+    /* Add Animation */
+    @keyframes animatetop {
+        from {left: -300px; opacity: 0}
+        to {left: 0; opacity: 1}
+    }
+
 #btn{
     color: rgb(0, 95, 184);
     padding: 1%;
