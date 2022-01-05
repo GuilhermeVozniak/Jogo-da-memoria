@@ -45,7 +45,6 @@ function mostra(id) {
         if (vez >= 1) {
             //vira a imagem
             vez = 0;
-            console.log(vez);
             elemento2 = document.getElementById(id);
 
             if (elemento2.src == elemento1.src) {
@@ -67,7 +66,6 @@ function mostra(id) {
             vez++;
             console.log(vez);
             elemento1 = document.getElementById(id);
-            console.log(elemento1);
         }
     }
     verificar();
