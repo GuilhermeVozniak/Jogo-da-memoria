@@ -34,11 +34,11 @@ function carregamento() {
     }
 
     shuffle(sorteado);
-    console.log(sorteado);
+    console.log(sorteado);//mostra o array sorteado
 }
 addEventListener("load", carregamento);//ao carregar
 
-function telafim(){
+function telafim(){//cria a tela de vitória
     //paragrafo
     let filho = document.createElement("p");
     filho.id = "WIN"
@@ -54,6 +54,12 @@ function telafim(){
     btn.setAttribute("onclick", "novojogo()");
     pai.appendChild(btn);
 
+    //nTentativas
+    let trys = document.createElement("p");
+    trys.id = "trys";
+    trys.innerHTML = `You tried ${nTentativa/2} Times to win!`;
+    pai.appendChild(trys);
+
 
 }
 
@@ -61,18 +67,20 @@ let ultima = "";
 let vez = 0;
 let elemento1;
 let elemento2;
+let nTentativa = 0;
 function mostra(id) {
     let nId = id.replace("img", "");
     imgs[nId].src = array_img[sorteado[nId]];
-
+    nTentativa++;
     function verificar() {
+        
         if (vez >= 1) {
             //vira a imagem
             vez = 0;
             elemento2 = document.getElementById(id);
 
             if (elemento2.src == elemento1.src) {
-                //se elementos igual reseta a var elemento
+                //se elementos igual mantém amostra
                 let elemento1;
                 let elemento2;
             }
@@ -107,3 +115,4 @@ function mostra(id) {
     }
     fim();
 }
+telafim();
