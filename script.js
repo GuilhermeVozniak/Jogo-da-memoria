@@ -22,8 +22,6 @@ function shuffle(array) {
     return array;
 }
 
-
-
 let imgs = document.getElementsByTagName("img");
 function carregamento() {
     for (let e = 0; e < imgs.length; e++) {
@@ -32,15 +30,46 @@ function carregamento() {
     }
 
     shuffle(sorteado);
-    console.log(sorteado);
-
-    
 }
 addEventListener("load", carregamento);//ao carregar
 
+let ultima = "";
+let vez = 0;
+let elemento1;
+let elemento2;
 function mostra(id) {
     let nId = id.replace("img", "");
     imgs[nId].src = array_img[sorteado[nId]];
-    if(imgs[nId].src == )
+
+    function verificar() {
+        if (vez >= 1) {
+            //vira a imagem
+            vez = 0;
+            console.log(vez);
+            elemento2 = document.getElementById(id);
+
+            if (elemento2.src == elemento1.src) {
+                //se elementos igual reseta a var elemento
+                let elemento1;
+                let elemento2;
+            }
+            else {
+                //senão vira as imagens de volta
+                setTimeout(e2, 700);
+                function e2() {
+                    elemento1.src = "./IMG/verde.png";
+                    elemento2.src = "./IMG/verde.png";
+                }
+
+            }
+        }
+        else {
+            vez++;
+            console.log(vez);
+            elemento1 = document.getElementById(id);
+            console.log(elemento1);
+        }
+    }
+    verificar();
 }
 
