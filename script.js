@@ -22,6 +22,10 @@ function shuffle(array) {
     return array;
 }
 
+function novojogo(){
+    window.location.reload();
+}
+
 let imgs = document.getElementsByTagName("img");
 function carregamento() {
     for (let e = 0; e < imgs.length; e++) {
@@ -30,8 +34,28 @@ function carregamento() {
     }
 
     shuffle(sorteado);
+    console.log(sorteado);
 }
 addEventListener("load", carregamento);//ao carregar
+
+function telafim(){
+    //paragrafo
+    let filho = document.createElement("p");
+    filho.id = "WIN"
+    filho.innerHTML = "YOU WIN!"
+    document.body.appendChild(filho);
+    
+    //btn parágrafo
+    let pai = document.getElementById("WIN");
+    let btn = document.createElement("input");
+    btn.id = "btn";
+    btn.type = "submit";
+    btn.value = "NEW GAME";
+    btn.setAttribute("onclick", "novojogo()");
+    pai.appendChild(btn);
+
+
+}
 
 let ultima = "";
 let vez = 0;
@@ -64,10 +88,22 @@ function mostra(id) {
         }
         else {
             vez++;
-            console.log(vez);
             elemento1 = document.getElementById(id);
         }
     }
     verificar();
-}
 
+    function fim() {
+        let ndVerder = 0;
+        for (let x = 0; x < imgs.length; x++) {
+            if (imgs[x].src == "http://localhost/Jogo-da-memoria/IMG/verde.png"){
+                ndVerder++;
+            }
+
+        }
+        if(ndVerder == 0){
+            telafim();
+        }
+    }
+    fim();
+}
