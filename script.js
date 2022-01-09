@@ -57,51 +57,65 @@ function telafim() {//cria a tela de vitória
     //nTentativas
     let trys = document.createElement("p");
     trys.id = "trys";
-    trys.innerHTML = `You tried ${nTentativa / 2} Times to win!`;
+    trys.innerHTML = `You faild ${nTentativa / 2} Times to win!`;
     pai.appendChild(trys);
 
 
 }
 
-let ultima = "";
 let vez = 0;
 let elemento1;
 let elemento2;
 let nTentativa = 0;
-
+let podeJogar = true;
 
 function mostra(id) {
+    //vira a carta no 1˚click
     let nId = id.replace("img", "");
-    imgs[nId].src = array_img[sorteado[nId]];
-    nTentativa++;
+
+    if (podeJogar) {
+        imgs[nId].src = array_img[sorteado[nId]];
+        nTentativa++;
+    }
 
     function verificar() {
         if (vez >= 1) {
-            //vira a imagem
-            vez = 0;
-            elemento2 = document.getElementById(id);
+
+            if (elemento1.id != id) {
+                //vira a imagem
+                podeJogar = false
+                vez = 0;
+                elemento2 = document.getElementById(id);
+            }
+
+
 
             if (elemento2.src == elemento1.src) {
                 //se elementos igual mantém amostra
                 let elemento1;
                 let elemento2;
+                podeJogar = true
             }
             else {
                 //senão vira as imagens de volta
+                setTimeout(() => { podeJogar = true }, 501)
                 setTimeout(e2, 500);
                 function e2() {
                     elemento1.src = "./IMG/verde.png";
                     elemento2.src = "./IMG/verde.png";
                 }
-
             }
         }
         else {
             vez++;
             elemento1 = document.getElementById(id);
         }
+
     }
-    verificar();
+    if (podeJogar) {
+        verificar();
+    }
+
 
     function fim() {
         let imgVerde = 16;
@@ -119,6 +133,11 @@ function mostra(id) {
         }
     }
     fim();
+
+
+
+
+
 
 }
 
