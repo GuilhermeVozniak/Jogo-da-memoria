@@ -72,24 +72,18 @@ let podeJogar = true;
 function mostra(id) {
     //vira a carta no 1˚click
     let nId = id.replace("img", "");
-
     if (podeJogar) {
         imgs[nId].src = array_img[sorteado[nId]];
         nTentativa++;
     }
-
     function verificar() {
         if (vez >= 1) {
-
-            if (elemento1.id != id) {
+            if (elemento1.id != id) {//se o click for difernente da imagem anterior
                 //vira a imagem
                 podeJogar = false
                 vez = 0;
                 elemento2 = document.getElementById(id);
             }
-
-
-
             if (elemento2.src == elemento1.src) {
                 //se elementos igual mantém amostra
                 let elemento1;
@@ -110,7 +104,6 @@ function mostra(id) {
             vez++;
             elemento1 = document.getElementById(id);
         }
-
     }
     if (podeJogar) {
         verificar();
@@ -133,11 +126,4 @@ function mostra(id) {
         }
     }
     fim();
-
-
-
-
-
-
 }
-
