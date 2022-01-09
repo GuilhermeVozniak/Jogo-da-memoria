@@ -22,7 +22,7 @@ function shuffle(array) {
     return array;
 }
 
-function novojogo(){
+function novojogo() {
     window.location.reload();
 }
 
@@ -38,13 +38,13 @@ function carregamento() {
 }
 addEventListener("load", carregamento);//ao carregar
 
-function telafim(){//cria a tela de vitória
+function telafim() {//cria a tela de vitória
     //paragrafo
     let filho = document.createElement("p");
     filho.id = "WIN"
     filho.innerHTML = "YOU WIN!"
     document.body.appendChild(filho);
-    
+
     //btn parágrafo
     let pai = document.getElementById("WIN");
     let btn = document.createElement("input");
@@ -57,7 +57,7 @@ function telafim(){//cria a tela de vitória
     //nTentativas
     let trys = document.createElement("p");
     trys.id = "trys";
-    trys.innerHTML = `You tried ${nTentativa/2} Times to win!`;
+    trys.innerHTML = `You tried ${nTentativa / 2} Times to win!`;
     pai.appendChild(trys);
 
 
@@ -68,12 +68,14 @@ let vez = 0;
 let elemento1;
 let elemento2;
 let nTentativa = 0;
+
+
 function mostra(id) {
     let nId = id.replace("img", "");
     imgs[nId].src = array_img[sorteado[nId]];
     nTentativa++;
+
     function verificar() {
-        
         if (vez >= 1) {
             //vira a imagem
             vez = 0;
@@ -102,17 +104,21 @@ function mostra(id) {
     verificar();
 
     function fim() {
-        let ndVerder = 0;
-        for (let x = 0; x < imgs.length; x++) {
-            if (imgs[x].src == "http://localhost/Jogo-da-memoria/IMG/verde.png"){
-                ndVerder++;
-            }
+        let imgVerde = 16;
+        let srcToVerify = "/IMG/verde.png"
+        let imgss = document.getElementsByTagName("img");
 
+        for (let x = 0; x < imgss.length; x++) {
+            let curentScr = `${imgss[x].src}`
+            if (curentScr.includes(srcToVerify)) {
+                imgVerde--
+            }
         }
-        if(ndVerder == 0){
+        if (imgVerde == 16) {
             telafim();
         }
     }
     fim();
+
 }
-telafim();
+
