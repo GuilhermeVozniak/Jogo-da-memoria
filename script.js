@@ -109,7 +109,6 @@ function mostra(id) {
         verificar();
     }
 
-
     function fim() {
         let imgVerde = 16;
         let srcToVerify = "/IMG/verde.png"
